@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swag.Core.Services;
 using Swag.Core.Services.Impl;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace SwagApi
 {
@@ -19,6 +20,15 @@ namespace SwagApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info
+                {
+                    Version = "v1",
+                    Title = "API"
+                });
+            });
+
             services.AddMvc();
             services.AddTransient<IProductService, ProductService>();
         }
@@ -30,6 +40,12 @@ namespace SwagApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1");
+            });
 
             app.UseMvc();
         }
