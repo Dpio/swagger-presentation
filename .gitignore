@@ -322,3 +322,4 @@ ASALocalRun/
 
 # NVidia Nsight GPU debugger configuration file
 *.nvuser
+2-aspboilerplate/Swagger.Sample/angular/.vscode/
