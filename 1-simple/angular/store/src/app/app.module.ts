@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, InjectionToken, ReflectiveInjector } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
@@ -8,7 +8,9 @@ import { ProductsService } from './products.service';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
 import { AppRoutingModule } from './app-routing.module';
-
+import { ProductServiceProxy } from '../shared/service-proxies/service-proxies';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { AppRoutingModule } from './app-routing.module';
     MessagesComponent,
   ],
   imports: [
+    HttpModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserModule
@@ -24,6 +28,7 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [
     ProductsService,
     MessageService,
+    ProductServiceProxy,
   ],
   bootstrap: [AppComponent]
 })

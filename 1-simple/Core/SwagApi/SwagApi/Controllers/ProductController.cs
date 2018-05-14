@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Swag.Core.Models;
 using Swag.Core.Services;
 
 namespace SwagApi.Controllers
@@ -22,6 +24,7 @@ namespace SwagApi.Controllers
         /// </summary>
         /// <returns>List of products.</returns>
         [HttpGet("getAll")]
+        [Produces("application/json", Type = typeof(IEnumerable<Product>))]
         public IActionResult GetActive()
         {
             var dto = _productService.GetAll();
@@ -38,6 +41,7 @@ namespace SwagApi.Controllers
         /// <param name="id">Product identifier type of Guid</param>
         /// <returns>Single product.</returns>
         [HttpGet("{id}")]
+        [Produces("application/json", Type = typeof(Product))]
         public IActionResult Get(Guid id)
         {
             var dto = _productService.GetById(id);
