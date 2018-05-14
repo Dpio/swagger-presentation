@@ -1,4 +1,6 @@
-# Allign Api and Ui With Swagger
+# Swagger - not only documentation
+
+[Presentation link](http://slides.com/dpio/deck)
 
 The repository created for SIITechTalk which idea is to share knowledge about tools and tricks that are useful in everyday work.
 
